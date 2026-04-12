@@ -1,0 +1,8 @@
+com\GeradorSenha\Util\JwtUtil.class
+com\GeradorSenha\GeradorSenhaApplication.class
+com\GeradorSenha\Service\AuthService.class
+com\GeradorSenha\Config\CorsConfig.class
+com\GeradorSenha\Controller\AuthController.class
+com\GeradorSenha\Repository\UserRepository.class
+com\GeradorSenha\Entity\User.class
+com\GeradorSenha\Config\SecurityConfig.class

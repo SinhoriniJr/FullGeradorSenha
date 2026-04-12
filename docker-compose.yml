@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: gerador-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Root
+      MYSQL_DATABASE: GeradorSenha
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backendGeradorSenha
+    container_name: gerador-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/GeradorSenha?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Root
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontGeradorSenha
+    container_name: gerador-frontend
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - EXPO_WEB_PORT=8081
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
