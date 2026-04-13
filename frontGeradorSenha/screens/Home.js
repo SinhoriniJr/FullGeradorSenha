@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Clipboard from "expo-clipboard";
-import { generatePassword } from "../service/passwordService";
+import { generatePassword, savePassword } from "../service/passwordService";
 import { useEffect } from "react";
 
 export default function Home({ navigation, onLogout }) {
@@ -20,15 +20,14 @@ export default function Home({ navigation, onLogout }) {
   const gerar = () => setSenha(generatePassword());
 
   const salvar = async () => {
-    const nova = { id: Date.now().toString(), name: nome, pass: senha };
-    const dados = await AsyncStorage.getItem("@lista");
-    const lista = dados ? JSON.parse(dados) : [];
-
-    await AsyncStorage.setItem("@lista", JSON.stringify([nova, ...lista]));
-
-    setModal(false);
-    setNome("");
-    navigation.navigate("Historico");
+    try {
+      await savePassword(senha, nome);
+      setModal(false);
+      setNome("");
+      navigation.navigate("Historico");
+    } catch (error) {
+      alert("Erro ao salvar: " + (error.response?.data || error.message));
+    }
   };
 
   const copiar = async () => {

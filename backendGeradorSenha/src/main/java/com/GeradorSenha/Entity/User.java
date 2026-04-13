@@ -17,7 +17,7 @@ public class User {
 
     private String senha;
 
-    // GETTERS E SETTERS
+ 
 
     public Long getId() {
         return id;

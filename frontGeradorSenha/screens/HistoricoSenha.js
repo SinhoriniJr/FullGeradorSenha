@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Pressable, StyleSheet } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
+import { getUserPasswords, deletePassword } from "../service/passwordService";
 
 export default function HistoricoSenha({ navigation }) {
   const [dados, setDados] = useState([]);
@@ -10,8 +10,12 @@ export default function HistoricoSenha({ navigation }) {
   const foco = useIsFocused();
 
   const carregar = async () => {
-    const lista = await AsyncStorage.getItem("@lista");
-    if (lista) setDados(JSON.parse(lista));
+    try {
+      const response = await getUserPasswords();
+      setDados(response.data);
+    } catch (error) {
+      alert("Erro ao carregar senhas: " + (error.response?.data || error.message));
+    }
     setMostrar({});
   };
 
@@ -25,13 +29,13 @@ export default function HistoricoSenha({ navigation }) {
 
       <FlatList
         data={dados}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.card}>
             <View>
-              <Text style={styles.name}>{item.name}</Text>
+              <Text style={styles.name}>{item.descricao}</Text>
               <Text style={{ letterSpacing: 2 }}>
-                {mostrar[item.id] ? item.pass : "********"}
+                {mostrar[item.id] ? item.senha : "********"}
               </Text>
             </View>
 
@@ -46,7 +50,7 @@ export default function HistoricoSenha({ navigation }) {
 
               <Pressable
                 onPress={async () => {
-                  await Clipboard.setStringAsync(item.pass);
+                  await Clipboard.setStringAsync(item.senha);
                   alert("Senha copiada!");
                 }}
               >
@@ -55,9 +59,12 @@ export default function HistoricoSenha({ navigation }) {
 
               <Pressable
                 onPress={async () => {
-                  const nova = dados.filter((i) => i.id !== item.id);
-                  setDados(nova);
-                  await AsyncStorage.setItem("@lista", JSON.stringify(nova));
+                  try {
+                    await deletePassword(item.id);
+                    setDados((prev) => prev.filter((i) => i.id !== item.id));
+                  } catch (error) {
+                    alert("Erro ao excluir: " + (error.response?.data || error.message));
+                  }
                 }}
               >
                 <Text>🗑️</Text>

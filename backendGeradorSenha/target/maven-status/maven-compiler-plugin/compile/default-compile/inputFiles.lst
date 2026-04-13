@@ -1,8 +1,12 @@
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Config\CorsConfig.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Config\SecurityConfig.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Controller\AuthController.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Entity\User.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\GeradorSenhaApplication.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Repository\UserRepository.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Service\AuthService.java
-C:\Users\jrsin\Desktop\backendGeradorSenha\src\main\java\com\GeradorSenha\Util\JwtUtil.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Config\CorsConfig.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Config\SecurityConfig.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Controller\AuthController.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Controller\PasswordController.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Entity\PasswordRecord.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Entity\User.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\GeradorSenhaApplication.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Repository\PasswordRecordRepository.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Repository\UserRepository.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Service\AuthService.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Service\PasswordService.java
+C:\Users\jrsin\Desktop\Gerador Full\backendGeradorSenha\src\main\java\com\GeradorSenha\Util\JwtUtil.java
